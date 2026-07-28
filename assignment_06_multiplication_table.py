@@ -54,4 +54,19 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def single_table(num):
+    print(f"\nMultiplication Table for {num}")
+    for i in range(1, 11):
+        print(f"{num} x {i} = {num * i}")
 
+def tables_upto_n(n):
+    for num in range(1, n + 1):
+        print(f"\nMultiplication Table for {num}")
+        for i in range(1, 11):
+            print(f"{num} x {i} = {num * i}")
+
+number = int(input("Enter a number for its multiplication table: "))
+single_table(number)
+
+limit = int(input("\nEnter N to print multiplication tables from 1 to N: "))
+tables_upto_n(limit)
