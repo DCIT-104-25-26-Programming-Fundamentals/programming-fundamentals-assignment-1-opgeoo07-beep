@@ -89,4 +89,99 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+students = []
+def add_student():
+    name = input("Enter student's full name: ")
+    student_id = input("Enter student ID: ")
+    for student in students:
+        if student["ID"] == student_id:
+            print("A student with this ID already exists.")
+            return
 
+    scores = list(map(float, input("Enter scores separated by spaces: ").split()))
+
+    students.append({
+        "Name": name,
+        "ID": student_id,
+        "Scores": scores
+    })
+
+    print("Student added successfully!")
+
+def view_students():
+    if not students:
+        print("No student records found.")
+        return
+
+    print("\nStudent Records")
+    print("-" * 50)
+    for student in students:
+        average = sum(student["Scores"]) / len(student["Scores"])
+        print(f"Name   : {student['Name']}")
+        print(f"ID     : {student['ID']}")
+        print(f"Scores : {student['Scores']}")
+        print(f"Average: {average:.2f}")
+        print("-" * 50)
+
+def search_student():
+    student_id = input("Enter student ID to search: ")
+
+    for student in students:
+        if student["ID"] == student_id:
+            average = sum(student["Scores"]) / len(student["Scores"])
+            print("\nStudent Found")
+            print(f"Name   : {student['Name']}")
+            print(f"ID     : {student['ID']}")
+            print(f"Scores : {student['Scores']}")
+            print(f"Average: {average:.2f}")
+            return
+
+    print("Student not found.")
+
+def update_scores():
+    student_id = input("Enter student ID: ")
+
+    for student in students:
+        if student["ID"] == student_id:
+            student["Scores"] = list(map(float,
+                                         input("Enter new scores separated by spaces: ").split()))
+            print("Scores updated successfully!")
+            return
+
+    print("Student not found.")
+def delete_student():
+    student_id = input("Enter student ID to delete: ")
+
+    for student in students:
+        if student["ID"] == student_id:
+            students.remove(student)
+            print("Student record deleted successfully!")
+            return
+
+    print("Student not found.")
+while True:
+    print("\n===== STUDENT MANAGEMENT SYSTEM =====")
+    print("1. Add Student")
+    print("2. View All Students")
+    print("3. Search Student by ID")
+    print("4. Update Student Scores")
+    print("5. Delete Student")
+    print("6. Exit")
+
+    choice = input("Enter your choice (1-6): ")
+
+    if choice == "1":
+        add_student()
+    elif choice == "2":
+        view_students()
+    elif choice == "3":
+        search_student()
+    elif choice == "4":
+        update_scores()
+    elif choice == "5":
+        delete_student()
+    elif choice == "6":
+        print("Exiting program. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
