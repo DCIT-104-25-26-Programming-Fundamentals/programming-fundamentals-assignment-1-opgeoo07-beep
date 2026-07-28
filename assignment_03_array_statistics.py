@@ -38,4 +38,29 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def mean(numbers):
+    return sum(numbers) / len(numbers)
 
+def median(numbers):
+    numbers = sorted(numbers)
+    n = len(numbers)
+
+    if n % 2 == 0:
+        return (numbers[n // 2 - 1] + numbers[n // 2]) / 2
+    else:
+        return numbers[n // 2]
+
+def mode(numbers):
+    count = Counter(numbers)
+    max_freq = max(count.values())
+    modes = [num for num, freq in count.items() if freq == max_freq]
+
+    if max_freq == 1:
+        return "No mode"
+    return modes
+
+numbers = list(map(float, input("Enter numbers separated by spaces: ").split()))
+
+print("Mean:", mean(numbers))
+print("Median:", median(numbers))
+print("Mode:", mode(numbers))
