@@ -59,4 +59,71 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def add_matrices(A, B):
+    rows = len(A)
+    cols = len(A[0])
+    result = []
 
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            row.append(A[i][j] + B[i][j])
+        result.append(row)
+
+    return result
+
+def subtract_matrices(A, B):
+    rows = len(A)
+    cols = len(A[0])
+    result = []
+
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            row.append(A[i][j] - B[i][j])
+        result.append(row)
+
+    return result
+
+def transpose_matrix(A):
+    rows = len(A)
+    cols = len(A[0])
+    result = []
+
+    for j in range(cols):
+        row = []
+        for i in range(rows):
+            row.append(A[i][j])
+        result.append(row)
+
+    return result
+
+A = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+
+B = [
+    [7, 8, 9],
+    [10, 11, 12]
+]
+
+print("Matrix A:")
+for row in A:
+    print(row)
+
+print("\nMatrix B:")
+for row in B:
+    print(row)
+
+print("\nAddition (A + B):")
+for row in add_matrices(A, B):
+    print(row)
+
+print("\nSubtraction (A - B):")
+for row in subtract_matrices(A, B):
+    print(row)
+
+print("\nTranspose of Matrix A:")
+for row in transpose_matrix(A):
+    print(row)
